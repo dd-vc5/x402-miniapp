@@ -44,9 +44,9 @@ export default function DataDetailPage() {
 
   return (
     <Page>
-      <Page.Main className="pb-24 max-w-md mx-auto bg-[#f5f5f7] dark:bg-black">
-        {/* Header */}
-        <div className="px-6 pt-6 pb-4 flex items-center gap-4">
+      <Page.Main className="pb-8 max-w-md mx-auto">
+        {/* Header - Secondary page: 24px padding, 24px space to content */}
+        <div className="px-6 pt-6 flex items-center gap-4">
           <button
             onClick={() => router.back()}
             className="p-2 hover:bg-white/50 dark:hover:bg-[#1c1c1e]/50 rounded-full transition-colors"
@@ -55,8 +55,8 @@ export default function DataDetailPage() {
           </button>
         </div>
 
-        {/* Background Image */}
-        <div className="px-6 mb-6">
+        {/* Background Image - 24px space from header */}
+        <div className="px-6 mt-6 mb-6">
           <div
             className="h-64 w-full rounded-3xl overflow-hidden"
             style={{ 
@@ -67,8 +67,8 @@ export default function DataDetailPage() {
           />
         </div>
 
-        {/* Content */}
-        <div className="px-6 space-y-6">
+        {/* Content - 32px space between sections, 32px space to bottom bar */}
+        <div className="px-6 space-y-8 pb-8">
           {/* Title */}
           <h1 className="text-[34px] font-bold text-[#1d1d1f] dark:text-[#f5f5f7] leading-tight">
             {item.title}

@@ -7,6 +7,14 @@ import { Plus } from 'iconoir-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
+/**
+ * Home page following Mini App design guidelines:
+ * - Default padding: 24px (px-6)
+ * - Space between header and content: 16px (main pages)
+ * - Space between sections: 32px
+ * - Space between search/categories and content: 24px
+ * - Space between last item and bottom bar: 32px
+ */
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | Category>('all');
   const categories: Category[] = ['sports', 'read', 'finance', 'crypto', 'business', 'tech', 'ai'];
@@ -17,9 +25,9 @@ export default function Home() {
 
   return (
     <Page>
-      <Page.Main className="pb-32 max-w-md mx-auto bg-[#f5f5f7] dark:bg-black">
-        {/* Header Section */}
-        <div className="px-6 pt-6 pb-4">
+      <Page.Main className="pb-8 max-w-md mx-auto">
+        {/* Header Section - 24px padding, 16px space to content */}
+        <div className="px-6 pt-6">
           <h1 className="text-[34px] font-bold text-[#1d1d1f] dark:text-[#f5f5f7] mb-1 leading-tight">
             Discover
           </h1>
@@ -28,8 +36,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Categories Section */}
-        <div className="px-6 mb-6">
+        {/* Categories Section - 24px space from header, 24px space to content below */}
+        <div className="px-6 mt-4 mb-6">
           <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-hide">
             <button
               onClick={() => setSelectedCategory('all')}
@@ -57,18 +65,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Cards Grid */}
-        <div className="px-6 space-y-5">
+        {/* Cards Grid - 32px space from last item to bottom bar */}
+        <div className="px-6 space-y-5 pb-8">
           {filteredItems.map((item) => (
             <DataCard key={item.id} item={item} />
           ))}
         </div>
       </Page.Main>
 
-      {/* Floating Create Button - App Store Style - Higher */}
+      {/* Floating Create Button - 24px from bottom bar (iOS safe area) */}
       <Link
         href="/home/create"
-        className="fixed bottom-20 right-6 z-50 w-14 h-14 bg-[#007aff] dark:bg-[#0a84ff] rounded-full flex items-center justify-center shadow-lg hover:bg-[#0051d5] dark:hover:bg-[#409cff] transition-all active:scale-95"
+        className="fixed bottom-28 right-6 z-50 w-14 h-14 bg-[#007aff] dark:bg-[#0a84ff] rounded-full flex items-center justify-center shadow-lg hover:bg-[#0051d5] dark:hover:bg-[#409cff] transition-all active:scale-95"
       >
         <Plus className="w-6 h-6 text-white" />
       </Link>

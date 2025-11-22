@@ -18,7 +18,7 @@ export default async function TabsLayout({
   return (
     <Page>
       {children}
-      <Page.Footer className="px-0 fixed bottom-0 w-full bg-white">
+      <Page.Footer className="px-0 fixed bottom-0 w-full bg-[#f5f5f7] dark:bg-black border-t border-[#d2d2d7] dark:border-[#38383a]">
         <Navigation />
       </Page.Footer>
     </Page>

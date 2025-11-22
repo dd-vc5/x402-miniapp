@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
  * Bottom navigation is the most common navigation pattern in Mini Apps
  * We require mobile first design patterns for mini apps
  * Read More: https://docs.world.org/mini-apps/design/app-guidelines#mobile-first
+ * 
+ * Navigation bar is positioned with 12px space from iOS & Android bottom bar
  */
 
 export const Navigation = () => {
@@ -35,9 +37,11 @@ export const Navigation = () => {
   };
 
   return (
-    <Tabs value={value} onValueChange={handleValueChange}>
-      <TabItem value="home" icon={<Home />} label="Home" />
-      <TabItem value="profile" icon={<User />} label="Profile" />
-    </Tabs>
+    <div className="pb-3 safe-area-bottom">
+      <Tabs value={value} onValueChange={handleValueChange}>
+        <TabItem value="home" icon={<Home />} label="Home" />
+        <TabItem value="profile" icon={<User />} label="Profile" />
+      </Tabs>
+    </div>
   );
 };

@@ -13,6 +13,20 @@
   --border: #d2d2d7;
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-lg: rgba(0, 0, 0, 0.15);
+  
+  /* Spacing variables per guidelines */
+  --spacing-base: 24px;
+  --spacing-header-content: 16px;
+  --spacing-header-content-secondary: 24px;
+  --spacing-sections: 32px;
+  --spacing-search-content: 24px;
+  --spacing-subheadline-content: 16px;
+  --spacing-header-secondary-title: 32px;
+  --spacing-secondary-title-description: 12px;
+  --spacing-last-item-bottom-bar: 32px;
+  --spacing-tab-bar-bottom: 12px;
+  --spacing-button-keyboard: 24px;
+  --spacing-button-bottom: 24px;
 }
 
 @theme inline {
@@ -36,6 +50,21 @@
   }
 }
 
+/* iOS Scroll Bounce Prevention - Mobile First */
+html,
+body {
+  width: 100vw;
+  height: 100dvh; /* Use 100dvh instead of 100vh for mobile */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,6 +77,9 @@ body {
   font-size: 17px;
   line-height: 1.47059;
   letter-spacing: -0.022em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Prevent zooming on mobile */
@@ -59,6 +91,12 @@ html {
 
 /* Mobile-only styling */
 @media (min-width: 768px) {
+  html,
+  body {
+    position: relative;
+    overflow: visible;
+  }
+  
   body {
     max-width: 768px;
     margin: 0 auto;
@@ -67,11 +105,6 @@ html {
 
 /* Ensure consistent sizing on mobile */
 @media (max-width: 767px) {
-  body {
-    width: 100vw;
-    overflow-x: hidden;
-  }
-  
   * {
     -webkit-tap-highlight-color: transparent;
   }
@@ -104,4 +137,16 @@ html {
 /* Smooth transitions */
 * {
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Safe area support for iOS */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Ensure proper spacing for bottom navigation */
+@supports (padding: max(0px)) {
+  .safe-area-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
 }
