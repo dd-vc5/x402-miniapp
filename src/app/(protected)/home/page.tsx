@@ -17,7 +17,7 @@ import { useState } from 'react';
  */
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | Category>('all');
-  const categories: Category[] = ['sports', 'read', 'finance', 'crypto', 'business', 'tech', 'ai'];
+  const categories: Category[] = ['sports', 'read', 'finance', 'crypto', 'business', 'tech', 'ai', 'travel'];
 
   const filteredItems = selectedCategory === 'all' 
     ? mockDataItems 

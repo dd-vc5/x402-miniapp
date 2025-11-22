@@ -1,4 +1,4 @@
-export type Category = 'sports' | 'read' | 'finance' | 'crypto' | 'business' | 'tech' | 'ai';
+export type Category = 'sports' | 'read' | 'finance' | 'crypto' | 'business' | 'tech' | 'ai' | 'travel';
 
 export interface DataItem {
   id: string;
@@ -192,6 +192,61 @@ export const mockDataItems: DataItem[] = [
     category: 'finance',
     bgImage: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     content: 'Backtested trading strategies with 10+ years of historical data. Includes performance metrics, drawdown analysis, and risk-adjusted returns.',
+  },
+  {
+    id: '16',
+    title: 'Argentina Football Clubs Performance Data',
+    description: 'Comprehensive performance analytics and predictions for upcoming matches of Argentina football clubs',
+    seller: 'FutbolArgentino',
+    rating: 4.9,
+    price: 49.99,
+    category: 'sports',
+    bgImage: 'linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)',
+    content: 'Detailed performance data for all major Argentina football clubs including Boca Juniors, River Plate, Racing Club, Independiente, and more. Includes team form, player statistics, injury reports, head-to-head records, and match predictions for upcoming fixtures. Updated daily with latest match results, player performance metrics, and tactical analysis. Perfect for football enthusiasts, bettors, and analysts tracking Argentina Primera División.',
+  },
+  {
+    id: '17',
+    title: 'Buenos Aires Vegetarian Dining Guide',
+    description: 'Curated list of vegetarian and vegan restaurants in Buenos Aires with local insider knowledge',
+    seller: 'BAFoodie',
+    rating: 4.8,
+    price: 24.99,
+    category: 'travel',
+    bgImage: 'linear-gradient(135deg, #55efc4 0%, #00b894 100%)',
+    content: 'Comprehensive guide to vegetarian and vegan dining in Buenos Aires featuring 100+ restaurants, cafes, and food markets. Includes hidden gems known only to locals, price ranges, best dishes, opening hours, and dietary restrictions (gluten-free, raw, etc.). Also covers neighborhood-specific recommendations, best times to visit, and insider tips for getting the best experience. Updated monthly with new openings and seasonal menu changes.',
+  },
+  {
+    id: '18',
+    title: 'Buenos Aires Shopping Guide - Local Secrets',
+    description: 'Insider shopping guide for Buenos Aires featuring local markets, boutiques, and hidden gems',
+    seller: 'BALocal',
+    rating: 4.7,
+    price: 29.99,
+    category: 'travel',
+    bgImage: 'linear-gradient(135deg, #fd79a8 0%, #e84393 100%)',
+    content: 'Exclusive shopping guide covering Palermo, San Telmo, Recoleta, and other neighborhoods. Includes local markets (Feria de San Telmo, Feria de Mataderos), artisan boutiques, leather goods shops, vintage stores, and designer outlets. Features price negotiation tips, best days to shop, local payment methods, and hidden spots tourists never find. Also includes recommendations for souvenirs, local brands, and where to find authentic Argentine products.',
+  },
+  {
+    id: '19',
+    title: 'Argentina Travel Curator - Buenos Aires, Bariloche & Ushuaia',
+    description: 'Local knowledge and hidden gems for Buenos Aires, Bariloche, and Ushuaia travel experiences',
+    seller: 'ArgentinaInsider',
+    rating: 4.9,
+    price: 59.99,
+    category: 'travel',
+    bgImage: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)',
+    content: 'Comprehensive travel guide with local insider knowledge for three of Argentina\'s most popular destinations. Buenos Aires: Hidden neighborhoods, local tango spots, best parrillas, street art tours, and cultural experiences. Bariloche: Secret hiking trails, local chocolate shops, off-the-beaten-path viewpoints, best times to visit, and Patagonian cuisine recommendations. Ushuaia: Local tips for Tierra del Fuego, best boat tours, penguin watching spots, local restaurants, and end-of-the-world experiences. Includes seasonal recommendations, weather tips, and monetizable local knowledge.',
+  },
+  {
+    id: '20',
+    title: 'Argentina Local Secrets - Monetizable Knowledge Base',
+    description: 'Exclusive local knowledge and insider tips for Argentina that can be monetized',
+    seller: 'LocalExpert',
+    rating: 4.8,
+    price: 79.99,
+    category: 'travel',
+    bgImage: 'linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%)',
+    content: 'Premium collection of monetizable local knowledge including: Best times to visit attractions (avoid crowds), local transportation hacks, currency exchange tips, tipping culture, safety recommendations, local customs and etiquette, hidden attractions not in guidebooks, local event calendars, seasonal activities, and exclusive access information. Also includes business opportunities, local partnerships, and ways to monetize this knowledge through tours, consulting, or content creation. Perfect for travel agents, tour operators, content creators, and entrepreneurs.',
   },
 ];
 

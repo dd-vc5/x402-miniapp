@@ -236,6 +236,7 @@ export default function CreateDataPage() {
                 <option value="business">Business</option>
                 <option value="tech">Tech</option>
                 <option value="ai">AI</option>
+                <option value="travel">Travel</option>
               </select>
             </div>
 
