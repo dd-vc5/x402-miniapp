@@ -1,3 +1,5 @@
+export type Category = 'sports' | 'read' | 'finance' | 'crypto' | 'business' | 'tech' | 'ai';
+
 export interface DataItem {
   id: string;
   title: string;
@@ -5,7 +7,7 @@ export interface DataItem {
   seller: string;
   rating: number;
   price: number;
-  category: 'sports' | 'read';
+  category: Category;
   bgImage: string;
   content: string;
   purchased?: boolean;
@@ -114,6 +116,83 @@ export const mockDataItems: DataItem[] = [
     bgImage: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
     content: 'A carefully curated collection of 500 technology articles covering programming, web development, AI, and more. Includes code examples and tutorials.',
   },
+  {
+    id: '9',
+    title: 'Crypto Market Alpha Signals',
+    description: 'Real-time trading signals and market analysis for top cryptocurrencies',
+    seller: 'CryptoAlpha',
+    rating: 4.8,
+    price: 99.99,
+    category: 'crypto',
+    bgImage: 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
+    content: 'Daily crypto trading signals with entry/exit points, stop-loss levels, and market sentiment analysis. Includes BTC, ETH, and altcoin coverage.',
+  },
+  {
+    id: '10',
+    title: 'Stock Market Insights 2024',
+    description: 'Weekly stock market analysis and investment recommendations',
+    seller: 'FinanceGuru',
+    rating: 4.6,
+    price: 79.99,
+    category: 'finance',
+    bgImage: 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)',
+    content: 'Comprehensive weekly stock market analysis including sector trends, earnings predictions, and buy/sell recommendations for S&P 500 companies.',
+  },
+  {
+    id: '11',
+    title: 'DeFi Protocol Analysis',
+    description: 'Deep dive into DeFi protocols with risk assessments and yield opportunities',
+    seller: 'DeFiAnalyst',
+    rating: 4.9,
+    price: 129.99,
+    category: 'crypto',
+    bgImage: 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
+    content: 'Detailed analysis of top DeFi protocols including TVL trends, tokenomics, security audits, and yield farming strategies.',
+  },
+  {
+    id: '12',
+    title: 'Startup Market Research',
+    description: 'Comprehensive market research data for startup founders',
+    seller: 'StartupInsights',
+    rating: 4.5,
+    price: 149.99,
+    category: 'business',
+    bgImage: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+    content: 'Market research reports covering TAM/SAM analysis, competitive landscapes, customer personas, and go-to-market strategies for various industries.',
+  },
+  {
+    id: '13',
+    title: 'AI Model Prompt Library',
+    description: 'Collection of 1000+ optimized prompts for various AI models',
+    seller: 'AIPrompts',
+    rating: 4.7,
+    price: 49.99,
+    category: 'ai',
+    bgImage: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+    content: 'Curated library of high-performing prompts for GPT-4, Claude, and other LLMs. Includes prompts for coding, writing, analysis, and creative tasks.',
+  },
+  {
+    id: '14',
+    title: 'Tech Product Reviews Database',
+    description: 'Detailed reviews and analysis of latest tech products',
+    seller: 'TechReviewer',
+    rating: 4.6,
+    price: 39.99,
+    category: 'tech',
+    bgImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    content: 'Comprehensive database of tech product reviews including smartphones, laptops, gadgets, and software. Includes performance benchmarks and user feedback.',
+  },
+  {
+    id: '15',
+    title: 'Trading Strategy Backtests',
+    description: 'Historical backtest results for various trading strategies',
+    seller: 'TradingPro',
+    rating: 4.8,
+    price: 199.99,
+    category: 'finance',
+    bgImage: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    content: 'Backtested trading strategies with 10+ years of historical data. Includes performance metrics, drawdown analysis, and risk-adjusted returns.',
+  },
 ];
 
 export const getUserListings = (username: string): DataItem[] => {
@@ -121,6 +200,6 @@ export const getUserListings = (username: string): DataItem[] => {
 };
 
 export const getUserPurchases = (username: string): DataItem[] => {
-  return mockDataItems.filter(item => item.purchased === true);
+  return mockDataItems.filter(item => item.purchased === true && item.seller.toLowerCase() === username.toLowerCase());
 };
 

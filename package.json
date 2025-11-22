@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-easy-crop": "^1.16.0",
     "@worldcoin/mini-apps-ui-kit-react": "^1.0.2",
     "@worldcoin/minikit-js": "latest",
     "@worldcoin/minikit-react": "latest",
@@ -23,6 +24,7 @@
     "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-easy-crop": "^5.5.5",
     "tailwind-merge": "^3.2.0",
     "viem": "2.23.5"
   },

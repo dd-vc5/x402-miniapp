@@ -44,116 +44,146 @@ export default function DataDetailPage() {
 
   return (
     <Page>
-      <Page.Main className="pb-24 max-w-md mx-auto">
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className="btn btn-ghost btn-sm mb-4"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          Back
-        </button>
+      <Page.Main className="pb-24 max-w-md mx-auto bg-[#f5f5f7] dark:bg-black">
+        {/* Header */}
+        <div className="px-6 pt-6 pb-4 flex items-center gap-4">
+          <button
+            onClick={() => router.back()}
+            className="p-2 hover:bg-white/50 dark:hover:bg-[#1c1c1e]/50 rounded-full transition-colors"
+          >
+            <ArrowLeft className="w-6 h-6 text-[#1d1d1f] dark:text-[#f5f5f7]" />
+          </button>
+        </div>
 
         {/* Background Image */}
-        <div
-          className="h-48 w-full rounded-lg mb-4"
-          style={{ background: item.bgImage }}
-        />
-
-        {/* Title */}
-        <h1 className="text-2xl font-bold mb-2">{item.title}</h1>
-
-        {/* Description */}
-        <p className="text-base-content/70 mb-4">{item.description}</p>
-
-        {/* Seller Info */}
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-sm text-base-content/60">by</span>
-          <span className="text-sm font-semibold">{item.seller}</span>
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 fill-warning text-warning" />
-            <span className="text-sm font-semibold">{item.rating}</span>
-          </div>
+        <div className="px-6 mb-6">
+          <div
+            className="h-64 w-full rounded-3xl overflow-hidden"
+            style={{ 
+              background: item.bgImage,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
         </div>
 
         {/* Content */}
-        {isPurchased ? (
-          <>
-            {/* Full Content for Purchased Items */}
-            <div className="card bg-base-200 p-4 mb-4">
-              <h2 className="font-semibold mb-2">Complete Data</h2>
-              <p className="text-sm">{item.content}</p>
-            </div>
+        <div className="px-6 space-y-6">
+          {/* Title */}
+          <h1 className="text-[34px] font-bold text-[#1d1d1f] dark:text-[#f5f5f7] leading-tight">
+            {item.title}
+          </h1>
 
-            {/* Review Section */}
-            <div className="card bg-base-100 shadow-md p-4 mb-4">
-              <h2 className="font-semibold mb-4">Leave a Review</h2>
-              
-              {/* Rating */}
-              <div className="mb-4">
-                <p className="text-sm mb-2">Rating</p>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      onClick={() => setRating(star)}
-                      className="btn btn-ghost btn-sm p-0"
-                    >
-                      <Star
-                        className={`w-6 h-6 ${
-                          star <= rating
-                            ? 'fill-warning text-warning'
-                            : 'text-base-content/30'
-                        }`}
-                      />
-                    </button>
-                  ))}
+          {/* Description */}
+          <p className="text-[17px] text-[#86868b] dark:text-[#98989d] leading-relaxed">
+            {item.description}
+          </p>
+
+          {/* Seller Info */}
+          <div className="flex items-center gap-2">
+            <span className="text-[15px] text-[#86868b] dark:text-[#98989d]">by</span>
+            <span className="text-[15px] font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">
+              {item.seller}
+            </span>
+            <div className="flex items-center gap-1 ml-auto">
+              <Star className="w-5 h-5 fill-[#ff9500] text-[#ff9500]" />
+              <span className="text-[15px] font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">
+                {item.rating}
+              </span>
+            </div>
+          </div>
+
+          {/* Content */}
+          {isPurchased ? (
+            <>
+              {/* Full Content for Purchased Items */}
+              <div className="bg-white dark:bg-[#1c1c1e] rounded-3xl p-6 shadow-sm">
+                <h2 className="text-[20px] font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-3">
+                  Complete Data
+                </h2>
+                <p className="text-[17px] text-[#1d1d1f] dark:text-[#f5f5f7] leading-relaxed">
+                  {item.content}
+                </p>
+              </div>
+
+              {/* Review Section */}
+              <div className="bg-white dark:bg-[#1c1c1e] rounded-3xl p-6 shadow-sm">
+                <h2 className="text-[20px] font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-4">
+                  Leave a Review
+                </h2>
+                
+                {/* Rating */}
+                <div className="mb-4">
+                  <p className="text-[15px] text-[#86868b] dark:text-[#98989d] mb-3">Rating</p>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        onClick={() => setRating(star)}
+                        className="p-1 hover:scale-110 transition-transform"
+                      >
+                        <Star
+                          className={`w-8 h-8 ${
+                            star <= rating
+                              ? 'fill-[#ff9500] text-[#ff9500]'
+                              : 'text-[#d2d2d7] dark:text-[#38383a]'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Review Text */}
+                <div className="mb-4">
+                  <textarea
+                    className="w-full px-4 py-3 bg-[#f5f5f7] dark:bg-[#2c2c2e] border border-[#d2d2d7] dark:border-[#38383a] rounded-xl text-[17px] text-[#1d1d1f] dark:text-[#f5f5f7] placeholder:text-[#86868b] dark:placeholder:text-[#98989d] focus:outline-none focus:ring-2 focus:ring-[#007aff] dark:focus:ring-[#0a84ff] resize-none"
+                    placeholder="Write your review..."
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    rows={4}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  onClick={handleSubmitReview}
+                  className="w-full py-4 px-6 bg-[#007aff] dark:bg-[#0a84ff] text-white rounded-xl font-bold text-[17px] hover:bg-[#0051d5] dark:hover:bg-[#409cff] transition-colors active:scale-95 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={rating === 0}
+                >
+                  Submit Review
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Preview for Non-Purchased Items */}
+              <div className="bg-white dark:bg-[#1c1c1e] rounded-3xl p-6 shadow-sm">
+                <h2 className="text-[20px] font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] mb-3">
+                  Preview
+                </h2>
+                <p className="text-[17px] text-[#86868b] dark:text-[#98989d] line-clamp-3 leading-relaxed">
+                  {item.content}
+                </p>
               </div>
 
-              {/* Review Text */}
-              <div className="mb-4">
-                <textarea
-                  className="textarea textarea-bordered w-full"
-                  placeholder="Write your review..."
-                  value={review}
-                  onChange={(e) => setReview(e.target.value)}
-                  rows={4}
-                />
+              {/* Price and Purchase Button */}
+              <div className="bg-white dark:bg-[#1c1c1e] rounded-3xl p-6 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[34px] font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">
+                    ${item.price.toFixed(2)}
+                  </span>
+                </div>
+                <button
+                  onClick={handlePurchase}
+                  className="w-full py-4 px-6 bg-[#007aff] dark:bg-[#0a84ff] text-white rounded-xl font-bold text-[17px] hover:bg-[#0051d5] dark:hover:bg-[#409cff] transition-colors active:scale-95 shadow-sm"
+                >
+                  Purchase
+                </button>
               </div>
-
-              {/* Submit Button */}
-              <button
-                onClick={handleSubmitReview}
-                className="btn btn-primary w-full"
-                disabled={rating === 0}
-              >
-                Submit Review
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Preview for Non-Purchased Items */}
-            <div className="card bg-base-200 p-4 mb-4">
-              <h2 className="font-semibold mb-2">Preview</h2>
-              <p className="text-sm line-clamp-3">{item.content}</p>
-            </div>
-
-            {/* Price and Purchase Button */}
-            <div className="card bg-base-100 shadow-md p-4">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-2xl font-bold">${item.price.toFixed(2)}</span>
-              </div>
-              <button
-                onClick={handlePurchase}
-                className="btn btn-primary w-full"
-              >
-                Purchase
-              </button>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </Page.Main>
     </Page>
   );
