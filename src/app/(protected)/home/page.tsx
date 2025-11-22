@@ -1,37 +1,66 @@
-import { auth } from '@/auth';
-import { Page } from '@/components/PageLayout';
-import { Pay } from '@/components/Pay';
-import { Transaction } from '@/components/Transaction';
-import { UserInfo } from '@/components/UserInfo';
-import { Verify } from '@/components/Verify';
-import { ViewPermissions } from '@/components/ViewPermissions';
-import { Marble, TopBar } from '@worldcoin/mini-apps-ui-kit-react';
+'use client';
 
-export default async function Home() {
-  const session = await auth();
+import { DataCard } from '@/components/DataCard';
+import { Page } from '@/components/PageLayout';
+import { mockDataItems, mockUser } from '@/data/mockData';
+import { Plus } from 'iconoir-react';
+import Link from 'next/link';
+import { useState } from 'react';
+
+export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'sports' | 'read'>('all');
+  const categories = ['sports', 'read'];
+
+  const filteredItems = selectedCategory === 'all' 
+    ? mockDataItems 
+    : mockDataItems.filter(item => item.category === selectedCategory);
 
   return (
-    <>
-      <Page.Header className="p-0">
-        <TopBar
-          title="Home"
-          endAdornment={
-            <div className="flex items-center gap-2">
-              <p className="text-sm font-semibold capitalize">
-                {session?.user.username}
-              </p>
-              <Marble src={session?.user.profilePictureUrl} className="w-12" />
-            </div>
-          }
-        />
-      </Page.Header>
-      <Page.Main className="flex flex-col items-center justify-start gap-4 mb-16">
-        <UserInfo />
-        <Verify />
-        <Pay />
-        <Transaction />
-        <ViewPermissions />
+    <Page>
+      <Page.Main className="pb-24 max-w-md mx-auto">
+        {/* Greeting */}
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold">
+            HI <span className="lowercase">{mockUser.username}</span>
+          </h1>
+        </div>
+
+        {/* Categories */}
+        <div className="mb-6">
+          <div className="flex gap-2">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`btn btn-sm ${selectedCategory === 'all' ? 'btn-primary' : 'btn-outline'}`}
+            >
+              All
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`btn btn-sm capitalize ${selectedCategory === cat ? 'btn-primary' : 'btn-outline'}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 gap-4">
+          {filteredItems.map((item) => (
+            <DataCard key={item.id} item={item} />
+          ))}
+        </div>
       </Page.Main>
-    </>
+
+      {/* Floating Create Button */}
+      <Link
+        href="/home/create"
+        className="fixed bottom-20 right-6 z-50 btn btn-circle btn-primary btn-lg shadow-lg"
+      >
+        <Plus className="w-6 h-6" />
+      </Link>
+    </Page>
   );
 }
